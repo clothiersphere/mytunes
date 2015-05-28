@@ -4,10 +4,12 @@ var SongQueueEntryView = Backbone.View.extend({
   tagName: 'tr',
 
   template: _.template('<td>(<%= artist %>)</td><td><%= title %></td>'),
-
+ // initialize: function(){
+ //    this.listenTo(this.model, 'change', this.render)
+ //  },
   events: {
     'click': function() {
-      this.model.play();
+      // this.render...we want to remove from song queue
     }
   },
 

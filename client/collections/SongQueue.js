@@ -6,11 +6,13 @@ var SongQueue = Songs.extend({
     this.on("add", this.playCheck, this)
     // this.on("remove", this.pop, this)
     this.on("ended", this.stop, this)
+    // this.on("enqueue", this.playCheck, this)
     this.on("dequeue", this.takeOff, this)
   },
 
   playCheck: function (){
-    if(this.length === 1){
+    console.log(this)
+    if(this.models.length === 1){
       this.playFirst();
     }
   },
