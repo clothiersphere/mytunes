@@ -12,18 +12,22 @@ var PlayerView = Backbone.View.extend({
     this.model.on("play", this.setSong, this)
   },
   events:{
-    'ended': 'setSong'
+    'ended': function(){this.model.ended()}
   },
 
   setSong: function(song){
-    // this.takeOff();
+    // if(this.length>1){
+    //  this.takeOff();
+    //  console.log(this)
+    // }'
+
     this.model = song;
     this.render();
   },
 
-  // takeOff: function(){
-  //   this.remove(this.first)
-  // },
+  takeOff: function(){
+    this.remove(this.first)
+  },
 
   render: function(){
     return this.$el.attr('src', this.model ? this.model.get('url') : '');

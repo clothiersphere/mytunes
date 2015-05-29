@@ -11,7 +11,7 @@ var SongQueue = Songs.extend({
   },
 
   playCheck: function (){
-    console.log(this)
+    // console.log(this)
     if(this.models.length === 1){
       this.playFirst();
     }
@@ -24,12 +24,19 @@ var SongQueue = Songs.extend({
   stop: function(){
     // this.remove();
     this.remove(this.at(0));
+    console.log(this)
     if(this.at(0)){
       this.playFirst()
+    }else{
+      this.trigger('stop')
     }
   },
 
-  takeOff: function(n){
-    this.remove(this.at(n))
+  takeOff: function(song){
+    if(this.at(0)===song){
+      this.stop();
+    }else{
+    this.remove(song)
+    }
   }
 });
